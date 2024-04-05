@@ -11,7 +11,7 @@ app = FastAPI(debug=False) # Crear una instancia de FastAPI y desactivar el modo
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permitir acceso desde cualquier origen
+    allow_origins=["*"],  #Permitir acceso desde cualquier origen
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
@@ -28,13 +28,13 @@ config = {
 configRemote = {
     'host' : 'srv1101.hstgr.io',
     'user' : 'u584908256_cinestar',
-    'password' : 'Senati2823@',
-    'database' : 'cinestar'
+    'password' : 'Senati2023@',
+    'database' : 'u584908256_cinestar'
 }
 
 # Función auxiliar para ejecutar procedimientos almacenados
 def call_stored_procedure(procedure_name: str, *args: Any) -> List[Dict[str, Any]]:
-    with mysql.connector.connect(**config) as cnx: #Conectar a mi base de datos
+    with mysql.connector.connect(**configRemote) as cnx: #Conectar a mi base de datos
         with cnx.cursor(dictionary=True) as cursor: #Crear un cursor para consultas SQL
             cursor.callproc(procedure_name, args) #Ejecutar el procedimiento almacenado
             for data in cursor.stored_results(): #Iterar sobre los resultados de mi procedimiento

@@ -4,7 +4,7 @@ import mysql.connector
 config = {
     'host' : 'localhost',
     'user' : 'root',
-    'password' : '',
+    'password' : 'admin',
     'database' : 'cinestar'
     
 }
